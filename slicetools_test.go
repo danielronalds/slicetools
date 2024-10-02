@@ -6,7 +6,7 @@ import (
 )
 
 func TestMap(t *testing.T) {
-	original := []int{1,2,3,4}
+	original := []int{1, 2, 3, 4}
 
 	fn := func(x int) int {
 		return x + 1
@@ -14,7 +14,7 @@ func TestMap(t *testing.T) {
 
 	mapped := Map(original, fn)
 
-	if slices.Compare(mapped, []int{2,3,4,5}) != 0 {
+	if slices.Compare(mapped, []int{2, 3, 4, 5}) != 0 {
 		t.Fatalf("Function was not applied as expected")
 	}
 }
@@ -48,13 +48,13 @@ func TestMapEmpty(t *testing.T) {
 }
 
 func TestFilter(t *testing.T) {
-	xs := []int {1,2,3,4,5} 
+	xs := []int{1, 2, 3, 4, 5}
 
 	isEven := func(x int) bool {
 		return (x % 2) == 0
 	}
 
-	expected := []int{2,4}
+	expected := []int{2, 4}
 
 	if slices.Compare(Filter(xs, isEven), expected) != 0 {
 		t.Fatalf("Function was not applied as expected")
@@ -62,7 +62,7 @@ func TestFilter(t *testing.T) {
 }
 
 func TestFilterOneElement(t *testing.T) {
-	xs := []int {1} 
+	xs := []int{1}
 
 	isEven := func(x int) bool {
 		return (x % 2) == 0
@@ -76,7 +76,7 @@ func TestFilterOneElement(t *testing.T) {
 }
 
 func TestFilterEmpty(t *testing.T) {
-	xs := make([]int, 0) 
+	xs := make([]int, 0)
 
 	isEven := func(x int) bool {
 		return (x % 2) == 0
