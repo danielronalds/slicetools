@@ -10,3 +10,4 @@ with go slices.
 - `Map`
 - `Filter`
 - `Foldl`
+- `Foldr`

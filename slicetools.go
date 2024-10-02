@@ -1,5 +1,7 @@
 package slicetools
 
+import "slices"
+
 // Applies a function, fn, to a slice, returning a new slice with the function applied to each element
 func Map[X, Y any](xs []X, fn func(X) Y) []Y {
 	yList := make([]Y, 0)
@@ -57,4 +59,14 @@ func Foldl[X, Y any](xs []X, init Y, fn func(Y, X) Y) Y {
 	}
 
 	return currVal
+}
+
+// Applies a function, fn, to a slice, reducing it to a value of type Y. Applies from the last
+// element to the first (right to left)
+func Foldr[X, Y any](xs []X, init Y, fn func(Y, X) Y) Y {
+	currXs := xs
+	// FIXME: There should be a more efficient way to do this
+	slices.Reverse(currXs)
+
+	return Foldl(currXs, init, fn)
 }
