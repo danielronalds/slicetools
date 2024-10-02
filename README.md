@@ -5,5 +5,8 @@ with go slices.
 
 ## Implemented Functions
 
-- Map
-- Filter
+- `Head`
+- `Tail`
+- `Map`
+- `Filter`
+- `Foldl`
