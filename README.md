@@ -8,6 +8,7 @@ with go slices.
 - `Head`
 - `Tail`
 - `Map`
+- `MapWithIndex`
 - `Filter`
 - `Foldl`
 - `Foldr`

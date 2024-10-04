@@ -47,6 +47,48 @@ func TestMapEmpty(t *testing.T) {
 	}
 }
 
+func TestMapWithIndex(t *testing.T) {
+	original := []int{1, 2, 3, 4}
+
+	fn := func(i int, x int) int {
+		return i
+	}
+
+	mapped := MapWithIndex(original, fn)
+
+	if slices.Compare(mapped, []int{0, 1, 2, 3}) != 0 {
+		t.Fatalf("Function was not applied as expected: actual slice %v", mapped)
+	}
+}
+
+func TestMapWithIndexOneElement(t *testing.T) {
+	original := []int{1}
+
+	fn := func(i int, x int) int {
+		return i
+	}
+
+	mapped := MapWithIndex(original, fn)
+
+	if slices.Compare(mapped, []int{0}) != 0 {
+		t.Fatalf("Function was not applied as expected: actual slice %v", mapped)
+	}
+}
+
+func TestMapWithIndexEmpty(t *testing.T) {
+	original := make([]int, 0)
+
+	fn := func(i int, x int) int {
+		return i
+	}
+
+	mapped := MapWithIndex(original, fn)
+
+	if slices.Compare(mapped, make([]int, 0)) != 0 {
+		t.Fatalf("Function was not applied as expected: actual slice %v", mapped)
+	}
+}
+
 func TestFilter(t *testing.T) {
 	xs := []int{1, 2, 3, 4, 5}
 
