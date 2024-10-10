@@ -244,3 +244,51 @@ func TestFoldlEmpty(t *testing.T) {
 		t.Fatalf("Function was not applied as expected, wanted %v got %v", expected, actual)
 	}
 }
+
+func TestFoldlWithIndex(t *testing.T) {
+	xs := []int{1, 2, 3, 4, 5}
+
+	fn := func(i, total, val int) int {
+		return total + i
+	}
+
+	expected := 10
+
+	actual := FoldlWithIndex(xs, 0, fn)
+
+	if actual != expected {
+		t.Fatalf("Function was not applied as expected, wanted %v got %v", expected, actual)
+	}
+}
+
+func TestFoldWithIndexlOneElement(t *testing.T) {
+	xs := []int{2}
+
+	fn := func(i, total, val int) int {
+		return total + (i  + 1)
+	}
+
+	expected := 1
+
+	actual := FoldlWithIndex(xs, 0, fn)
+
+	if actual != expected {
+		t.Fatalf("Function was not applied as expected, wanted %v got %v", expected, actual)
+	}
+}
+
+func TestFoldWithIndexlEmpty(t *testing.T) {
+	xs := make([]int, 0)
+
+	fn := func(i, total, val int) int {
+		return total + (i  + 1)
+	}
+
+	expected := 10 // Should be the init value
+
+	actual := FoldlWithIndex(xs, 10, fn)
+
+	if actual != expected {
+		t.Fatalf("Function was not applied as expected, wanted %v got %v", expected, actual)
+	}
+}

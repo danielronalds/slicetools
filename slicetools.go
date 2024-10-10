@@ -73,6 +73,26 @@ func Foldl[X, Y any](xs []X, init Y, fn func(Y, X) Y) Y {
 	return currVal
 }
 
+// Same as Foldl, except the index of the current element is passed to the function.
+func FoldlWithIndex[X, Y any](xs []X, init Y, fn func(int, Y, X) Y) Y {
+	currXs := xs
+	currVal := init
+
+	index := 0
+
+	for true {
+		if len(currXs) == 0 {
+			break
+		}
+		x := Head(currXs)
+		currVal = fn(index, currVal, x)
+		currXs = Tail(currXs)
+		index += 1
+	}
+
+	return currVal
+}
+
 // Applies a function, fn, to a slice, reducing it to a value of type Y. Applies from the last
 // element to the first (right to left)
 func Foldr[X, Y any](xs []X, init Y, fn func(Y, X) Y) Y {
