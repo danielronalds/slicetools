@@ -131,6 +131,21 @@ func TestFilterEmpty(t *testing.T) {
 	}
 }
 
+// Uses the same logic as Filter, so no need for multiple test cases beyond a basic sanity check
+func TestFilterWithIndex(t *testing.T) {
+	xs := []int{2,1,2,1,2,1}
+
+	isEvenIndex := func (i, x int) bool {
+		return i % 2 == 0
+	}
+
+	expected := []int{2,2,2}
+
+	if slices.Compare(FilterWithIndex(xs, isEvenIndex), expected) != 0 {
+		t.Fatalf("Function was not applied as expected")
+	}
+}
+
 func TestTail(t *testing.T) {
 	xs := []int{1, 2, 3, 4, 5}
 

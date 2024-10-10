@@ -38,6 +38,19 @@ func Filter[X any](xs []X, pred func(X) bool) []X {
 	return filteredXs
 }
 
+// Same as Filter, except the predicate function is also passed the index of the element being filterd
+func FilterWithIndex[X any](xs []X, pred func(int, X) bool) []X {
+	filteredXs := make([]X, 0)
+
+	for i, x := range xs {
+		if pred(i, x) {
+			filteredXs = append(filteredXs, x)
+		}
+	}
+
+	return filteredXs
+}
+
 // Returns a slice without it's first element
 func Tail[X any](xs []X) []X {
 	if len(xs) == 0 {
