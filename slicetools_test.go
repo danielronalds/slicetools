@@ -133,13 +133,13 @@ func TestFilterEmpty(t *testing.T) {
 
 // Uses the same logic as Filter, so no need for multiple test cases beyond a basic sanity check
 func TestFilterWithIndex(t *testing.T) {
-	xs := []int{2,1,2,1,2,1}
+	xs := []int{2, 1, 2, 1, 2, 1}
 
-	isEvenIndex := func (i, x int) bool {
-		return i % 2 == 0
+	isEvenIndex := func(i, x int) bool {
+		return i%2 == 0
 	}
 
-	expected := []int{2,2,2}
+	expected := []int{2, 2, 2}
 
 	if slices.Compare(FilterWithIndex(xs, isEvenIndex), expected) != 0 {
 		t.Fatalf("Function was not applied as expected")
@@ -280,7 +280,7 @@ func TestFoldWithIndexlOneElement(t *testing.T) {
 	xs := []int{2}
 
 	fn := func(i, total, val int) int {
-		return total + (i  + 1)
+		return total + (i + 1)
 	}
 
 	expected := 1
@@ -296,7 +296,7 @@ func TestFoldWithIndexlEmpty(t *testing.T) {
 	xs := make([]int, 0)
 
 	fn := func(i, total, val int) int {
-		return total + (i  + 1)
+		return total + (i + 1)
 	}
 
 	expected := 10 // Should be the init value
