@@ -102,3 +102,12 @@ func Foldr[X, Y any](xs []X, init Y, fn func(Y, X) Y) Y {
 
 	return Foldl(currXs, init, fn)
 }
+
+// Same as Foldr, except the index of the current element is passed to the function.
+func FoldrWithIndex[X, Y any](xs []X, init Y, fn func(int, Y, X) Y) Y {
+	currXs := xs
+
+	slices.Reverse(currXs)
+
+	return FoldlWithIndex(currXs, init, fn)
+}
